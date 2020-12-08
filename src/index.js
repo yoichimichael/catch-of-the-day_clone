@@ -9,6 +9,9 @@ import { render } from 'react-dom';
 // import { Component } from 'react';
 // class StorePicker extends Component {}
 
-import StorePicker from './components/StorePicker.js'
+// using just StorePicker after from would make React look for a node module dependency
+// need to use relative path
+// can leave off file extension, as .js is assumed
+import StorePicker from './components/StorePicker'
 
 render(<StorePicker />, document.getElementById('main'));
