@@ -14,4 +14,6 @@ import { render } from 'react-dom';
 // can leave off file extension, as .js is assumed
 import StorePicker from './components/StorePicker'
 
+import './css/style.css';
+
 render(<StorePicker />, document.getElementById('main'));
