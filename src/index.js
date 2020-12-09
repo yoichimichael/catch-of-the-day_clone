@@ -12,8 +12,9 @@ import { render } from 'react-dom';
 // using just StorePicker after from would make React look for a node module dependency
 // need to use relative path
 // can leave off file extension, as .js is assumed
-import StorePicker from './components/StorePicker'
+import StorePicker from './components/StorePicker';
+import App from './components/App';
 
 import './css/style.css';
 
-render(<StorePicker />, document.getElementById('main'));
+render(<App />, document.getElementById('main'));
