@@ -1,10 +1,14 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 class App extends Component {
   render() {
     return (
       <div className="catch-of-the-day">
-        <p>heyy!</p>
+        <div className="menu">
+          <Header />
+        </div>
+        <Inventory />
+        <Order />
       </div>
     )
   }
