@@ -10,8 +10,8 @@ class App extends Component {
         <div className="menu">
            <Header />
         </div>
-        {/* <Order /> */}
-        {/* <Inventory /> */}
+        <Order />
+        <Inventory />
  
       </div>
     )
