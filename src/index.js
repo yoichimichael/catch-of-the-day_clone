@@ -3,7 +3,7 @@
 import React from 'react'; 
 
 // alternate to above:
-// import { Component } from 'react';
+// import React, { Component } from 'react';
 // class StorePicker extends Component {}
 
 // importing only the render method from the 'react-dom' dependency
