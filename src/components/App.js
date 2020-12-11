@@ -8,9 +8,13 @@ class App extends Component {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
-           <Header />
+                    {/* component instance */}
+           <Header tagline="Fresh Seafood Market"/>
+           <Header tagline="I am Cool"/>
         </div>
+        {/* component instance */}
         <Order />
+        {/* component instance */}
         <Inventory />
  
       </div>

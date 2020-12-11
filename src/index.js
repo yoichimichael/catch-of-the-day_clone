@@ -2,12 +2,14 @@
 // make sure second react is lower case
 import React from 'react'; 
 
+// alternate to above:
+// import { Component } from 'react';
+// class StorePicker extends Component {}
+
 // importing only the render method from the 'react-dom' dependency
 import { render } from 'react-dom';
 
-// alternate 
-// import { Component } from 'react';
-// class StorePicker extends Component {}
+
 
 // using just StorePicker after from would make React look for a node module dependency
 // need to use relative path
