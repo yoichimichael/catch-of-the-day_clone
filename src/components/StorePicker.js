@@ -4,6 +4,7 @@ import { getFunName } from '../helpers';
 
 // capitalize first letter of class name
 class StorePicker extends React.Component {
+
   constructor() {
     // necessary for a constructor method
     // extends functionality from Component
@@ -24,9 +25,14 @@ class StorePicker extends React.Component {
     // 1. stop form from submitting
     event.preventDefault();
     // 2. get the text from the input
-    console.log(this.myInput.current.defaultValue)
+    // note that this differs from course lesson
+    // in lesson, 'current' is 'value'
+    // because older version of React?
+    const storeName = this.myInput.current.value;
     // 3. change the page to /store/whatever-they-entered
-    // console.log("Going to Store");
+    // changes the URL in the browser's address bar
+    // <BrowserRouter/> responds to this by 'switching' components 
+    this.props.history.push(`/store/${storeName}`)
   }
   
   render() {
@@ -46,8 +52,6 @@ class StorePicker extends React.Component {
         <button type="submit">Visit Store →</button>
       </form>
     )
-    // Example of JSX
-    // return <p>I am the Store Picker!</p>
 
     // Example of no-JSX element creation:
     // React.createElement(‘p’, { className: ‘hey }, “Heyoooo’);
