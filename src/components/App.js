@@ -11,7 +11,9 @@ class App extends Component {
   };
 
   addFish = (fish) => {
-    console.log("adding a fish!")
+    const fishes = {...this.state.fishes};
+    fishes[`fish${Date.now()}`] = fish
+    this.setState({ fishes });
   }
 
   render() {
