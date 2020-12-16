@@ -31,7 +31,7 @@ class StorePicker extends React.Component {
     const storeName = this.myInput.current.value;
     // 3. change the page to /store/whatever-they-entered
     // changes the URL in the browser's address bar
-    // <BrowserRouter/> responds to this by 'switching' components 
+    // <BrowserRouter/> responds to this by 'switching' components  
     this.props.history.push(`/store/${storeName}`)
   }
   
