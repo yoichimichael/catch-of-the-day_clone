@@ -13,15 +13,15 @@ class AddFishForm extends Component {
     // stop submit action
     e.preventDefault();
     
-  const fish = {
-    name: this.nameRef.current.value, 
-    price: parseFloat(this.priceRef.current.value),
-    status: this.statusRef.current.value,
-    desc: this.descRef.current.value,
-    image: this.imageRef.current.value
-  }
+    const fish = {
+      name: this.nameRef.current.value, 
+      price: parseFloat(this.priceRef.current.value), 
+      status: this.statusRef.current.value,
+      desc: this.descRef.current.value,
+      image: this.imageRef.current.value
+    };
 
-    console.log(fish)
+    this.props.addFish(fish);
 
   }
 
