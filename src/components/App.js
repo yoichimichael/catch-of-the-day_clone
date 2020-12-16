@@ -4,6 +4,16 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 class App extends Component {
+
+  state = {
+    fishes: {},
+    order: {}
+  };
+
+  addFish = (fish) => {
+    console.log("adding a fish!")
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -15,7 +25,7 @@ class App extends Component {
         {/* component instance */}
         <Order />
         {/* component instance */}
-        <Inventory />
+        <Inventory addFish={this.addFish} />
  
       </div>
     )

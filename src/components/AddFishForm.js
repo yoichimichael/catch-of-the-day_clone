@@ -15,13 +15,13 @@ class AddFishForm extends Component {
     
   const fish = {
     name: this.nameRef.current.value, 
-    price: this.priceRef.current.value,
+    price: parseFloat(this.priceRef.current.value),
     status: this.statusRef.current.value,
     desc: this.descRef.current.value,
     image: this.imageRef.current.value
   }
 
-    console.log(this.nameRef.current.value)
+    console.log(fish)
 
   }
 
