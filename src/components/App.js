@@ -29,7 +29,7 @@ class App extends Component {
                     {/* component instance */}
            <Header tagline="Fresh Seafood Market"/>
            <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key => <Fish key={key}/>)}
+            {Object.keys(this.state.fishes).map(key => <Fish key={key} fishDetails={this.state.fishes[key]}/>)}
            </ul>
         </div>
         {/* component instance */}
