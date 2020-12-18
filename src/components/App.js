@@ -3,6 +3,7 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import fishes from '../sample-fishes';
+import Fish from './Fish'
 
 class App extends Component {
 
@@ -27,7 +28,9 @@ class App extends Component {
         <div className="menu">
                     {/* component instance */}
            <Header tagline="Fresh Seafood Market"/>
-           <Header tagline="I am Cool"/>
+           <ul className="fishes">
+            <Fish />
+           </ul>
         </div>
         {/* component instance */}
         <Order />
