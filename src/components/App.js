@@ -28,7 +28,7 @@ class App extends Component {
     // 2. Either add or update order
     order[key] = order[key] + 1 || 1; 
     // 3. Call setState to update our state object
-    this.setState({ order };)
+    this.setState({ order });
   }
 
   render() {
@@ -38,7 +38,14 @@ class App extends Component {
                     {/* component instance */}
            <Header tagline="Fresh Seafood Market"/>
            <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key => <Fish key={key} fishDetails={this.state.fishes[key]}/>)}
+            {Object.keys(this.state.fishes).map(key => (
+              <Fish 
+                key={key} 
+                index={key}
+                fishDetails={this.state.fishes[key]} 
+                addToOrder={this.addToOrder}
+              />
+            ))}
            </ul>
         </div>
         {/* component instance */}
