@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { formatPrice } from '../helpers';
 
 class Order extends Component {
+
+  // helper render function
+  renderOrder = (key) => {
+    return <li>{key}</li>;
+  }
+
   render() {
 
     const orderIds = Object.keys(this.props.order);
@@ -17,9 +24,12 @@ class Order extends Component {
     return (
       <div className="order-wrap">
         <h2>Order!!!</h2>
-        {orderIds}
+        <ul>
+          {orderIds.map(this.renderOrder)}
+        </ul>
         <div className="total">
-          <strong>{total}</strong>
+          Total:
+          <strong>{formatPrice(total)}</strong>
         </div>
       </div>
 
