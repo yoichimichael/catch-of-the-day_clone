@@ -3,9 +3,21 @@ import { formatPrice } from '../helpers';
 
 class Order extends Component {
 
-  // helper render function
+  // helper render function 
   renderOrder = (key) => {
-    return <li>{key}</li>;
+    const fish = this.props.fishes[key];
+    const count = this.props.order[key];
+    const isAvailable = fish.status === 'available';
+    if(!isAvailable) {
+      return <li key={key}>
+        {/* fallback to account for missing fish if removed from inventory */}
+        Sorry {fish? fish.name : 'fish'} is no longer available
+      </li>
+    }
+    return <li key={key}>
+      {count} lbs {fish.name}
+      {formatPrice(count * fish.price)}
+      </li>;
   }
 
   render() {
@@ -24,7 +36,7 @@ class Order extends Component {
     return (
       <div className="order-wrap">
         <h2>Order!!!</h2>
-        <ul>
+        <ul className="order">
           {orderIds.map(this.renderOrder)}
         </ul>
         <div className="total">
