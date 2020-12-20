@@ -18,7 +18,11 @@ class App extends Component {
 
     // this is not a React ref, but a firebase ref
     // this is a reference to the Firebase datase
-    this.ref = base.syncState(`${params.storeId}/fishes`);
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      // syncs App's sync state
+      context: this,
+      state: 'fishes'
+    });
   }
 
   addFish = (fish) => {
