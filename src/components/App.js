@@ -86,7 +86,11 @@ class App extends Component {
         {/* component instance */}
         <Order fishes={this.state.fishes} order={this.state.order}/>
         {/* component instance */}
-        <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes }/>
+        <Inventory 
+          addFish={this.addFish} l
+          loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
+        />
  
       </div>
     )
