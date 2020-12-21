@@ -18,6 +18,7 @@ class App extends Component {
 
     // reinstate localStorage
     const localStorageRef = localStorage.getItem(params.storeId)
+    // console.log(JSON.parse(localStorageRef))
     if(localStorageRef){
       this.setState({ order: JSON.parse(localStorageRef) })
     }

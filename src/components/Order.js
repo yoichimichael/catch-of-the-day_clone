@@ -7,7 +7,14 @@ class Order extends Component {
   renderOrder = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
-    const isAvailable = fish.status === 'available';
+
+    // if fish exists AND fish.status === 'available
+    const isAvailable = fish && fish.status === 'available';
+
+    // make sure fish is loaded before we continue
+    // this prevents 'fish is unavailable' from flashing before load
+    if (!fish) return null;
+
     if(!isAvailable) {
       return <li key={key}>
         {/* fallback to account for missing fish if removed from inventory */}
