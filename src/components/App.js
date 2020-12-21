@@ -43,10 +43,6 @@ class App extends Component {
     base.removeBinding(this.ref);
   }
 
-  
-
-  // above to methods are persisting data to Firebase in real time
-
   addFish = (fish) => {
     const fishes = {...this.state.fishes};
     fishes[`fish${Date.now()}`] = fish
