@@ -16,6 +16,12 @@ class App extends Component {
   componentDidMount() {
     const { params } = this.props.match;
 
+    // reinstate localStorage
+    const localStorageRef = localStorage.getItem(params.storeId)
+    if(localStorageRef){
+      this.setState({ order: JSON.parse(localStorageRef) })
+    }
+
     // this is not a React ref, but a firebase ref
     // this is a reference to the Firebase datase
     this.ref = base.syncState(`${params.storeId}/fishes`, {
@@ -25,9 +31,20 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate(){
+    localStorage.setItem(
+      this.props.match.params.storeId, 
+      JSON.stringify(this.state.order)
+    );
+  }
+
   componentWillUnmount(){
     base.removeBinding(this.ref);
   }
+
+  
+
+  // above to methods are persisting data to Firebase in real time
 
   addFish = (fish) => {
     const fishes = {...this.state.fishes};
