@@ -24,6 +24,7 @@ class Order extends Component {
     return <li key={key}>
       {count} lbs {fish.name}
       {formatPrice(count * fish.price)}
+      <button onClick={() => this.props.removeFromOrder(key)}>Remove</button>
       </li>;
   }
 
@@ -42,7 +43,7 @@ class Order extends Component {
 
     return (
       <div className="order-wrap">
-        <h2>Order!!!</h2>
+        <h2>Order</h2>
         <ul className="order">
           {orderIds.map(this.renderOrder)}
         </ul>
