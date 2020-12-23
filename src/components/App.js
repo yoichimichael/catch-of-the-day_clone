@@ -57,6 +57,17 @@ class App extends Component {
     this.setState({ fishes });
   }
 
+  deleteFish = (key) => {
+    // 1. take a copy of state
+    const fishes = { ...this.state.fishes};
+    // 2. update the copy
+    // note that for firebase to register a deleted item, it needs to be set to null
+    fishes[key] = null;
+    // 3. update the state
+    this.setState({ fishes })
+  }
+
+
   loadSampleFishes = () => {
     this.setState({ fishes });
   }
