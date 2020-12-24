@@ -423,7 +423,7 @@ ul.order li span.count span {
   padding: 2rem 0;
   font-size: 1.4rem;
   border-bottom: 3px solid #000;
-  border-top: 3px double #000;
+  /* border-top: 3px double #000; */
 }
 .total strong {
   float: right;
