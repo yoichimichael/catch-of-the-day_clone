@@ -23,7 +23,7 @@ class Order extends Component {
       // note the pluralized classNames
         classNames="order" 
         key={key} 
-        timeout={{ enter: 250, exit: 250}}
+        timeout={{ enter: 500, exit: 500}}
         >
           <li key={key}>
             {/* fallback to account for missing fish if removed from inventory */}
@@ -37,13 +37,25 @@ class Order extends Component {
       // note the pluralized classNames
         classNames="order" 
         key={key} 
-        timeout={{ enter: 3000, exit: 3000}}
+        timeout={{ enter: 500, exit: 500}}
       >
         <li key={key}>
-          {count} lbs {fish.name}
-          {formatPrice(count * fish.price)}
-          {/* '&times' is special symbol for 'x' */}
-          <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
+          <span>
+            <TransitionGroup component="span" className="count">
+              <CSSTransition 
+                classNames="count" 
+                key={count} 
+                // note: as an object, this could be defined in a variable somewhere else and inserted by name, instead of as an object literal, like below
+                timeout={{enter: 500, exit: 500}}
+              >
+                <span>{count}</span>
+              </CSSTransition>
+            </TransitionGroup> 
+            lbs {fish.name}
+            {formatPrice(count * fish.price)}
+            {/* '&times' is special symbol for 'x' */}
+            <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
+          </span>
         </li>
       </CSSTransition>
     )

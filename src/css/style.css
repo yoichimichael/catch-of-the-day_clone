@@ -5,8 +5,8 @@
   padding: 0 !important;
 }
 .order-enter.order-enter-active {
-  -webkit-transition: 3s;
-  transition: 3s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   max-height: 60px;
   -webkit-transform: translateX(0);
           transform: translateX(0);
@@ -15,13 +15,38 @@
 .order-exit {
   -webkit-transform: translateX(0);
           transform: translateX(0);
+  max-height: 60px;
 }
 .order-exit.order-exit-active {
-  -webkit-transition: 3s;
-  transition: 3s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   -webkit-transform: translateX(120%);
           transform: translateX(120%);
   padding: 0;
+  max-height: 0;
+}
+.count-enter {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+.count-enter.count-enter-active {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.count-exit {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.count-exit.count-exit-active {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 @font-face {
   font-family: "haymakerregular";
@@ -398,7 +423,7 @@ ul.order li span.count span {
   padding: 2rem 0;
   font-size: 1.4rem;
   border-bottom: 3px solid #000;
-  /* border-top: 3px double #000; */
+  border-top: 3px double #000;
 }
 .total strong {
   float: right;
