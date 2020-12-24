@@ -18,17 +18,36 @@ class Order extends Component {
     if (!fish) return null;
 
     if(!isAvailable) {
-      return <li key={key}>
-        {/* fallback to account for missing fish if removed from inventory */}
-        Sorry {fish? fish.name : 'fish'} is no longer available
-      </li>
+      return (
+        <CSSTransition 
+      // note the pluralized classNames
+        classNames="order" 
+        key={key} 
+        timeout={{ enter: 250, exit: 250}}
+        >
+          <li key={key}>
+            {/* fallback to account for missing fish if removed from inventory */}
+            Sorry {fish? fish.name : 'fish'} is no longer available
+          </li>
+        </CSSTransition>
+      )
     }
-    return <li key={key}>
-      {count} lbs {fish.name}
-      {formatPrice(count * fish.price)}
-      {/* '&times' is special symbol for 'x' */}
-      <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
-      </li>;
+    return (
+      <CSSTransition 
+      // note the pluralized classNames
+        classNames="order" 
+        key={key} 
+        timeout={{ enter: 250, exit: 250}}
+      >
+        <li key={key}>
+          {count} lbs {fish.name}
+          {formatPrice(count * fish.price)}
+          {/* '&times' is special symbol for 'x' */}
+          <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
+        </li>
+      </CSSTransition>
+    )
+
   }
 
   render() {
