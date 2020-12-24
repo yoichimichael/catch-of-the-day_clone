@@ -13,18 +13,20 @@ class Order extends Component {
     // if fish exists AND fish.status === 'available
     const isAvailable = fish && fish.status === 'available';
 
+    const transitionOptions = {
+      //note pluralized class names
+      classNames: "order",
+      key: {key},
+      timeout: { enter: 500, exit: 500}
+    };
+
     // make sure fish is loaded before we continue
     // this prevents 'fish is unavailable' from flashing before load
     if (!fish) return null;
 
     if(!isAvailable) {
       return (
-        <CSSTransition 
-      // note the pluralized classNames
-        classNames="order" 
-        key={key} 
-        timeout={{ enter: 500, exit: 500}}
-        >
+        <CSSTransition {...transitionOptions}>
           <li key={key}>
             {/* fallback to account for missing fish if removed from inventory */}
             Sorry {fish? fish.name : 'fish'} is no longer available
@@ -33,12 +35,7 @@ class Order extends Component {
       )
     }
     return (
-      <CSSTransition 
-      // note the pluralized classNames
-        classNames="order" 
-        key={key} 
-        timeout={{ enter: 500, exit: 500}}
-      >
+      <CSSTransition {...transitionOptions}>
         <li key={key}>
           <span>
             <TransitionGroup component="span" className="count">
