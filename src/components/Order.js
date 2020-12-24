@@ -37,7 +37,7 @@ class Order extends Component {
       // note the pluralized classNames
         classNames="order" 
         key={key} 
-        timeout={{ enter: 500, exit: 3000}}
+        timeout={{ enter: 3000, exit: 3000}}
       >
         <li key={key}>
           {count} lbs {fish.name}
