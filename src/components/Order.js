@@ -20,7 +20,7 @@ class Order extends Component {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
 
-    console.log(count);
+    
 
     // if fish exists AND fish.status === 'available
     const isAvailable = fish && fish.status === 'available';
@@ -28,9 +28,11 @@ class Order extends Component {
     const transitionOptions = {
       //note pluralized class names
       classNames: "order",
-      key: {key},
-      timeout: { enter: 500, exit: 500}
+      key: key,
+      timeout: { enter: 500, exit: 500 }
     };
+
+    // console.log({...transitionOptions});
 
     // make sure fish is loaded before we continue
     // this prevents 'fish is unavailable' from flashing before load
