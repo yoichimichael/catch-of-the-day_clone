@@ -15,8 +15,12 @@ class Order extends Component {
 
   // helper render function 
   renderOrder = (key) => {
+    
+
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
+
+    console.log(count);
 
     // if fish exists AND fish.status === 'available
     const isAvailable = fish && fish.status === 'available';
@@ -34,6 +38,7 @@ class Order extends Component {
 
     if(!isAvailable) {
       return (
+        // reusable options object
         <CSSTransition {...transitionOptions}>
           <li key={key}>
             {/* fallback to account for missing fish if removed from inventory */}
@@ -42,6 +47,7 @@ class Order extends Component {
         </CSSTransition>
       )
     }
+    
     return (
       <CSSTransition {...transitionOptions}>
         <li key={key}>
@@ -70,6 +76,9 @@ class Order extends Component {
   render() {
 
     const orderIds = Object.keys(this.props.order);
+
+    console.log(orderIds);
+
     const total = orderIds.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key];
       const count = this.props.order[key];

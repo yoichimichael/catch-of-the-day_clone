@@ -17,7 +17,7 @@ class App extends Component {
 
   static propTypes = {
     match: PropTypes.object 
-  }
+  };
 
   componentDidMount() {
     const { params } = this.props.match;
@@ -79,7 +79,7 @@ class App extends Component {
 
   addToOrder = (key) => {
     // 1. take a copy of state
-    const order = {... this.state.order}
+    const order = { ...this.state.order }
     // 2. Either add or update order
     order[key] = order[key] + 1 || 1; 
     // 3. Call setState to update our state object
@@ -88,7 +88,7 @@ class App extends Component {
 
   removeFromOrder = key => {
     // 1. take a copy of state
-    const order = {... this.state.order}
+    const order = { ...this.state.order }
     // 2. Remove that item from order
     // not mirroring to firebase, so don't need to set to null
     delete order[key];
