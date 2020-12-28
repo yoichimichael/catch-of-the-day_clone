@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { formatPrice } from '../helpers';
 // for transition animation
 import { TransitionGroup, CSSTransition } from 'react-transition-group'; 
 
 class Order extends Component {
+
+  static propTypes = {
+    fishes: PropTypes.object,
+    order: PropTypes.object,
+    removeFromOrder: PropTypes.func
+  }
 
   // helper render function 
   renderOrder = (key) => {

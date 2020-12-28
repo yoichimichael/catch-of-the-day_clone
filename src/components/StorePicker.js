@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 // from separate function file with named exports
 import { getFunName } from '../helpers';
 
 // capitalize first letter of class name
 class StorePicker extends React.Component {
+
+  static propTypes = {
+    history: PropTypes.object
+  }
 
   constructor() {
     // necessary for a constructor method
