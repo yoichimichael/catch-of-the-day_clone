@@ -126,6 +126,8 @@ class App extends Component {
           deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
+          // from React Router
+          storeId={this.props.match.params.storeId}
         />
  
       </div>

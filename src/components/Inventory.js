@@ -17,12 +17,29 @@ class Inventory extends Component {
     loadSampleFishes: PropTypes.func
   }  
 
+  state = { 
+    uid: null,
+    owner: null
+  }
+
   // authData is user data from whichever platform was used to sign in
   authHandler = async (authData) => {
     // 1. lookup current store in firebase database
-    const store = base.fetch()
+    // look up this use of fetch vs. post, used below
+    const store = await base.fetch(this.props.storeId, { context: this });
+    console.log(store);
     // 2. claim it if there's no owner
+    if (!store.owner){
+      // save it as our own
+      await base.post(`${this.props.storeId}/owner`, {
+        data: authData.user.uid
+      })
+    }
     // 3. set the state of the inventory component to reflect the current user
+    this.setState({
+      uid: authData.user.uid,
+      owner: store.owner || authData.user.uid
+    })
     console.log(authData)
   }
 
@@ -37,7 +54,19 @@ class Inventory extends Component {
   }
   
   render() {
-    return <Login authenticate={this.authenticate}/>
+    // 1. check if they are not logged in
+    if (!this.state.uid) {
+      return <Login authenticate={this.authenticate}/>
+    }
+    
+    // 2. check if they are not the owner of the store
+    if (this.state.uid !== this.state.owner) {
+      return <div>
+        <p>Sorry, you are not the owner!</p>
+      </div>
+    }
+
+    // 3. they must be the owner, just render the inventory
     return (
       <div className="inventory">
         <h2>Inventory</h2>
