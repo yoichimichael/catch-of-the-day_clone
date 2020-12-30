@@ -78,9 +78,6 @@ class Order extends Component {
   render() {
 
     const orderIds = Object.keys(this.props.order);
-
-    console.log(orderIds);
-
     const total = orderIds.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key];
       const count = this.props.order[key];

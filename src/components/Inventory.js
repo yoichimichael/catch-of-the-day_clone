@@ -22,6 +22,15 @@ class Inventory extends Component {
     owner: null
   }
 
+  componentDidMount() {
+    // checks to see if user is logged in to show or not show inventory on refresh
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        this.authHandler({ user });
+      }
+    })
+  }
+
   // authData is user data from whichever platform was used to sign in
   authHandler = async (authData) => {
     // 1. lookup current store in firebase database
@@ -52,8 +61,17 @@ class Inventory extends Component {
       .signInWithPopup(authProvider)
       .then(this.authHandler);
   }
+
+  logout = async () => {
+    console.log('Logging Out!');
+    await firebase.auth().signOut();
+    this.setState({ uid: null });
+  }
   
   render() {
+
+    const logout = <button onClick={this.logout}>Log Out!</button>
+
     // 1. check if they are not logged in
     if (!this.state.uid) {
       return <Login authenticate={this.authenticate}/>
@@ -63,6 +81,7 @@ class Inventory extends Component {
     if (this.state.uid !== this.state.owner) {
       return <div>
         <p>Sorry, you are not the owner!</p>
+        {logout}
       </div>
     }
 
@@ -70,6 +89,7 @@ class Inventory extends Component {
     return (
       <div className="inventory">
         <h2>Inventory</h2>
+        {logout}
         {Object.keys(this.props.fishes).map(key => 
           <EditFishForm 
             key={key} 
