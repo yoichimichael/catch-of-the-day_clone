@@ -1,5 +1,3 @@
-// can import this because it's part of our dependencies
-// make sure second react is lower case
 import React from 'react'; 
 
 // alternate to above:
