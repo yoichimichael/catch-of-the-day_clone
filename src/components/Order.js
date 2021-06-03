@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { formatPrice } from '../helpers';
-// for transition animation
 import { TransitionGroup, CSSTransition } from 'react-transition-group'; 
 
 class Order extends Component {
@@ -13,37 +12,24 @@ class Order extends Component {
     removeFromOrder: PropTypes.func
   }
 
-  // helper render function 
   renderOrder = (key) => {
     
 
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
-
-    
-
-    // if fish exists AND fish.status === 'available
     const isAvailable = fish && fish.status === 'available';
-
     const transitionOptions = {
-      //note pluralized class names
       classNames: "order",
       key: key,
       timeout: { enter: 500, exit: 500 }
     };
 
-    // console.log({...transitionOptions});
-
-    // make sure fish is loaded before we continue
-    // this prevents 'fish is unavailable' from flashing before load
     if (!fish) return null;
 
     if(!isAvailable) {
       return (
-        // reusable options object
         <CSSTransition {...transitionOptions}>
           <li key={key}>
-            {/* fallback to account for missing fish if removed from inventory */}
             Sorry {fish? fish.name : 'fish'} is no longer available
           </li>
         </CSSTransition>
@@ -58,7 +44,6 @@ class Order extends Component {
               <CSSTransition 
                 classNames="count" 
                 key={count} 
-                // note: as an object, this could be defined in a variable somewhere else and inserted by name, instead of as an object literal, like below
                 timeout={{enter: 500, exit: 500}}
               >
                 <span>{count}</span>
@@ -66,7 +51,6 @@ class Order extends Component {
             </TransitionGroup> 
             lbs {fish.name}
             {formatPrice(count * fish.price)}
-            {/* '&times' is special symbol for 'x' */}
             <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
           </span>
         </li>

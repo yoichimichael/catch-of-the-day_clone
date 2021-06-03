@@ -13,9 +13,8 @@ class AddFishForm extends Component {
     addFish: PropTypes.func
   }
   
-  // arrow component to allow access to 'this'
   createFish = (e) => {
-    // stop submit action
+    
     e.preventDefault();
     
     const fish = {

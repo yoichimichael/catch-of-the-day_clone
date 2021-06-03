@@ -16,11 +16,8 @@ class EditFishForm extends Component {
   }
 
   handleChange = (e) => {
-    // update that fish
-    // 1. take a copy of the current fish
     const updatedFish = { 
       ...this.props.fish,
-      // overwrites the property contained in the copy we received via above soread operator
       [e.currentTarget.name]: e.currentTarget.value  
     };
     this.props.updateFish(this.props.index, updatedFish);

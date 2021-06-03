@@ -72,12 +72,10 @@ class Inventory extends Component {
 
     const logout = <button onClick={this.logout}>Log Out!</button>
 
-    // 1. check if they are not logged in
     if (!this.state.uid) {
       return <Login authenticate={this.authenticate}/>
     }
     
-    // 2. check if they are not the owner of the store
     if (this.state.uid !== this.state.owner) {
       return <div>
         <p>Sorry, you are not the owner!</p>
@@ -85,7 +83,6 @@ class Inventory extends Component {
       </div>
     }
 
-    // 3. they must be the owner, just render the inventory
     return (
       <div className="inventory">
         <h2>Inventory</h2>

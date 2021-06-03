@@ -18,8 +18,6 @@ class Fish extends Component {
   }  
 
   render() {
-
-    // ES6 destructuring
     const { image, name, price, desc, status } = this.props.fishDetails;
     const isAvailable = status === 'available';
 
