@@ -14,7 +14,7 @@ class App extends Component {
     fishes: {},
     order: {}
   };
-
+  
   static propTypes = {
     match: PropTypes.object 
   };
@@ -25,7 +25,6 @@ class App extends Component {
     if(localStorageRef){
       this.setState({ order: JSON.parse(localStorageRef) })
     }
-
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: 'fishes'

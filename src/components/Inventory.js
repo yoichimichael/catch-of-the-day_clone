@@ -23,7 +23,6 @@ class Inventory extends Component {
   }
 
   componentDidMount() {
-    // checks to see if user is logged in to show or not show inventory on refresh
     firebase.auth().onAuthStateChanged(user => {
       if(user){
         this.authHandler({ user });
@@ -31,31 +30,21 @@ class Inventory extends Component {
     })
   }
 
-  // authData is user data from whichever platform was used to sign in
   authHandler = async (authData) => {
-    // 1. lookup current store in firebase database
-    // look up this use of fetch vs. post, used below
     const store = await base.fetch(this.props.storeId, { context: this });
-    console.log(store);
-    // 2. claim it if there's no owner
     if (!store.owner){
-      // save it as our own
       await base.post(`${this.props.storeId}/owner`, {
         data: authData.user.uid
       })
     }
-    // 3. set the state of the inventory component to reflect the current user
     this.setState({
       uid: authData.user.uid,
       owner: store.owner || authData.user.uid
     })
-    console.log(authData)
   }
 
   authenticate = (provider) => {
-    // create a new auth provider based on through whom user wants to sign in
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
-    // user signs in with a popup and then user data gets sent to authHander()
     firebaseApp
       .auth()
       .signInWithPopup(authProvider)

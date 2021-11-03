@@ -13,11 +13,11 @@ class Order extends Component {
   }
 
   renderOrder = (key) => {
-    
-
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
+
     const isAvailable = fish && fish.status === 'available';
+
     const transitionOptions = {
       classNames: "order",
       key: key,
@@ -43,7 +43,7 @@ class Order extends Component {
             <TransitionGroup component="span" className="count">
               <CSSTransition 
                 classNames="count" 
-                key={count} 
+                key={count}
                 timeout={{enter: 500, exit: 500}}
               >
                 <span>{count}</span>
@@ -56,7 +56,6 @@ class Order extends Component {
         </li>
       </CSSTransition>
     )
-
   }
 
   render() {
